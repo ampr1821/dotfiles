@@ -1,0 +1,6 @@
+@import "~/.cache/wal/colors-rofi-dark"
+configuration {
+ modi: "window,drun,ssh,combi";
+ font: "agave Nerd Font Mono 12";
+ combi-modi: "window,drun,ssh";
+ }

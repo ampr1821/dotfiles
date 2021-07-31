@@ -1,0 +1,50 @@
+#! /bin/sh
+
+# starting sxhkd
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+# setting color schemes
+#xrdb merge ~/.Xresources &
+
+# set the cursor as left pointer instead of the default 'x'
+xsetroot -cursor_name left_ptr &
+
+# starting picom
+picom &
+
+# setting wallpaper and extracting colors
+WALL=$HOME/walls/wallhaven-735k2e.png
+
+feh --bg-fill $WALL &
+
+# pywal to extract colors
+wal -i $WALL &
+
+. "${HOME}/.cache/wal/colors.sh"
+
+# starting polybar
+~/.config/polybar/launch.sh &
+
+# defining workspaces
+bspc monitor -d 1 2 3 4 5 6 7 8
+
+bspc config focus_follows_pointer true
+
+bspc config top_padding 5
+
+bspc rule -a Firefox-esr desktop=1 follow=on
+bspc rule -a Emacs desktop=3 follow=on state=tiled
+bspc rule -a discord desktop=7 follow=on
+bspc rule -a Spotify desktop=6 follow=on
+# rule for spotify might not work because spotify sets 'WM_CLASS' later
+
+bspc config normal_border_color "$color1"
+bspc config active_border_color "$color2"
+bspc config focused_border_color "$color15"
+bspc config presel_feedback_color "$color1"
+bspc config border_width 2
+bspc config borderless_monocle true
+
+bspc config gapless_monocle false
+bspc config window_gap 5
+bspc config split_ratio 0.50
