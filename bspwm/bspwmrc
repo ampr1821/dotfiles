@@ -13,7 +13,7 @@ xsetroot -cursor_name left_ptr &
 picom &
 
 # setting wallpaper and extracting colors
-WALL=$HOME/walls/wallhaven-735k2e.png
+WALL=$HOME/walls/203536.png
 
 feh --bg-fill $WALL &
 
@@ -21,10 +21,13 @@ feh --bg-fill $WALL &
 wal -i $WALL &
 
 . "${HOME}/.cache/wal/colors.sh"
+./"${HOME}/alacritty-color-export/script.sh"
 
 # starting polybar
 ~/.config/polybar/launch.sh &
 
+# starting flameshot
+flameshot &
 # defining workspaces
 bspc monitor -d 1 2 3 4 5 6 7 8
 
