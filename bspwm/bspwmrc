@@ -12,15 +12,17 @@ xsetroot -cursor_name left_ptr &
 # starting picom
 picom &
 
+# starting file-manager as a daemon to autodetect and mount removable drives
+pcmanfm -d &
+
 # setting wallpaper and extracting colors
-WALL=$HOME/walls/203536.png
+WALL=$HOME/walls/pexels-craig-adderley-1563356.jpg
 
 feh --bg-fill $WALL &
 
 # pywal to extract colors
-wal -i $WALL &
+python -m pywal -i $WALL &
 
-. "${HOME}/.cache/wal/colors.sh"
 ./"${HOME}/alacritty-color-export/script.sh"
 
 # starting polybar
@@ -36,10 +38,6 @@ bspc config focus_follows_pointer true
 bspc config top_padding 5
 
 bspc rule -a Firefox-esr desktop=1 follow=on
-bspc rule -a Emacs desktop=3 follow=on state=tiled
-bspc rule -a discord desktop=7 follow=on
-bspc rule -a Spotify desktop=6 follow=on
-# rule for spotify might not work because spotify sets 'WM_CLASS' later
 
 bspc config normal_border_color "$color1"
 bspc config active_border_color "$color2"
