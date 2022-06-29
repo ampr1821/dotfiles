@@ -6,13 +6,13 @@ XF86MonBrightnessDown
 	brightnessctl set 5%-
 
 XF86AudioMute
-	pactl set-sink-mute 0 toggle
+	amixer set Master toggle
 
 XF86AudioRaiseVolume
-	pactl set-sink-volume 0 +5%
+	amixer set Master 5%+
 
 XF86AudioLowerVolume
-	pactl set-sink-volume 0 -5%
+	amixer set Master 5%-
 
 # alacritty (terminal emulator)
 super + Return
@@ -28,11 +28,8 @@ super + Escape
 
 # take screenshot with flameshot
 Print
-     flameshot full -p ~/Pictures/captures
+     flameshot gui
     #maim $HOME/Pictures/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
-
-super + Print
-    maim -s $HOME/Pictures/screenshots/$(date +%Y-%m-%d_%H-%m-%s).jpg
 
 #
 # bspwm hotkeys
